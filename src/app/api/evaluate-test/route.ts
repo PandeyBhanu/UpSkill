@@ -189,7 +189,7 @@ async function calculateBadges(supabase: any, userId: string, testId: string, fe
 
   if (userScores && userScores.length >= 3) {
     const recentScores = userScores.slice(0, 3)
-    const allAbove70 = recentScores.every((s: any) => s.total_score >= 70)
+    const allAbove70 = recentScores.every((s: { total_score: number }) => s.total_score >= 70)
     if (allAbove70) {
       badges.push('Consistent Streak 🔥')
     }
