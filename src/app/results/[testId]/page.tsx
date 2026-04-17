@@ -6,6 +6,7 @@ import DashboardLayout from '@/components/DashboardLayout'
 import { Trophy, Clock, ChevronDown, ChevronUp, Medal, Star, Award, TrendingUp } from 'lucide-react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'
 import confetti from 'canvas-confetti'
+// @ts-ignore - canvas-confetti types not available
 
 interface ScoreData {
   id: string
@@ -81,7 +82,7 @@ export default function ResultsPage({ params }: { params: Promise<{ testId: stri
       }
 
       // Trigger confetti if user won
-      if (!partnerScore || userData.total_score > (partnerData?.total_score || 0)) {
+      if (!partnerScore || userData.total_score > (partnerScore.total_score || 0)) {
         setTimeout(() => {
           confetti({
             particleCount: 100,
